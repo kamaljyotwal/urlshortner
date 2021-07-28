@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortner</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div style="margin: 0 auto !important; width: 65%">
+      <h1 class="text-center">URL Shortner</h1>
+      <form
+        action="/short"
+        method="post"
+        class="my-4 form-inline"
+        style="display: flex; width: 90%; margin: auto"
+      >
+        <!-- <label for="urlField" class="sr-only">Type Here: </label> -->
+        <input
+          type="url"
+          name="fullUrl"
+          id="urlField"
+          placeholder="URL"
+          required
+          class="form-control"
+          style="width: 80%"
+        />
+        <button type="submit" style="width: 20%" class="btn btn-success">Shrink</button>
+      </form>
+
+      <table class="table table-striped table-responsive" style="width: 90%; margin: auto">
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortie.forEach(i=>{ %>
+            <tr>
+              <td><a href="<%= i.full %>"><%= i.full %></a></td>
+              <td><a href="<%= i.short %>"><%= i.short %></a></td>
+              <td><%= i.click %></td>
+            </tr>
+          <% })%>
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+
+</html>
